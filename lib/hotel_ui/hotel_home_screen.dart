@@ -45,43 +45,42 @@ class _HotelHomeScreenState extends State<HotelHomeScreen>
               child: NestedScrollView(
             headerSliverBuilder: (context, innerBoxIsScrolled) {
               return <Widget>[
-                // SliverList(
-                //     delegate: SliverChildBuilderDelegate((context, index) {
-                //   return Column(
-                //     children: <Widget>[getSearchBarUI(), getTimeDateUI()],
-                //   );
-                // }, childCount: 1)),
-                // SliverPersistentHeader(
-                //     floating: true,
-                //     pinned: true,
-                //     delegate: ContestTabHeader(getFilterBarUI()))
+                SliverList(
+                    delegate: SliverChildBuilderDelegate((context, index) {
+                  return Column(
+                    children: <Widget>[getSearchBarUI(), getTimeDateUI()],
+                  );
+                }, childCount: 1)),
+                SliverPersistentHeader(
+                    floating: true,
+                    pinned: true,
+                    delegate: ContestTabHeader(getFilterBarUI()))
               ];
             },
-            body: Container(),
-            // body: Container(
-            //   color: HotelTheme.buildLightTheme().backgroundColor,
-            //   child: ListView.builder(
-            //     itemBuilder: (context, index) {
-            //      final int count=hotelList.length > 10 ? 10 : hotelList.length;
-            //      final Animation<double> animation =Tween<double>(
-            //       begin: 0.0,
-            //       end: 1.0
-            //      ).animate(CurvedAnimation(parent: animationController!, curve: Interval(
-            //       (1/count) * index,1.0,curve: Curves.fastOutSlowIn
-            //      )));
-            //      animationController!.forward();
-            //       return HotelListView(
-            //         callback: () {},
-            //         hotelData: hotelList[index],
-            //         animation: animation,
-            //         animationController: animationController,
-            //       );
-            //     },
-            //     itemCount: hotelList.length,
-            //     padding: const EdgeInsets.only(top: 8),
-            //     scrollDirection: Axis.vertical,
-            //   ),
-            // ),
+            body: Container(
+              color: HotelTheme.buildLightTheme().backgroundColor,
+              child: ListView.builder(
+                itemBuilder: (context, index) {
+                 final int count=hotelList.length > 10 ? 10 : hotelList.length;
+                 final Animation<double> animation =Tween<double>(
+                  begin: 0.0,
+                  end: 1.0
+                 ).animate(CurvedAnimation(parent: animationController!, curve: Interval(
+                  (1/count) * index,1.0,curve: Curves.fastOutSlowIn
+                 )));
+                 animationController!.forward();
+                  return HotelListView(
+                    callback: () {},
+                    hotelData: hotelList[index],
+                    animation: animation,
+                    animationController: animationController,
+                  );
+                },
+                itemCount: hotelList.length,
+                padding: const EdgeInsets.only(top: 8),
+                scrollDirection: Axis.vertical,
+              ),
+            ),
           ))
         ],
       ),
